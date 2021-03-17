@@ -125,3 +125,10 @@ STATIC_URL = '/static/'
 
 
 ASGI_APPLICATION = 'core.routing.application'
+
+# should use Redis, but now we're using inMemoryChannelLayer instead
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}

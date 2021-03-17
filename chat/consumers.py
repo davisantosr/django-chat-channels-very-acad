@@ -15,13 +15,16 @@ class ChatRoomConsumer(AsyncJsonWebsocketConsumer):
       self.channel_name
     )
 
+    await self.accept()
+    
     await self.channel_layer.group_send(
       self.room_group_name,
       {
-        'type': 'tester message',
+        'type': 'tester_message',
         'tester': 'testing',
       }
     )
+
 
   # function defined with the same name as type on the group_send
   async def tester_message(self, event):
